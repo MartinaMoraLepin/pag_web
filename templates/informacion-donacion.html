@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de donación</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilodonaciones.css') }}">
+</head>
+<body>
+    Tabla completa de la información sobre la donación
+    <table>
+        <tr>
+            <td>Región</td>
+            <td>Comuna</td>
+            <td>Dirección de retiro</td>
+            <td>Tipo</td>
+            <td>Cantidad</td>
+            <td>Fecha disponibilidad</td>
+            <td>Descripción</td>
+            <td>Condiciones de retiro</td>
+            <td>Nombre Solicitante</td>
+            <td>Email</td>
+            <td>Celular</td>
+            <td>Fotos</td>
+        </tr>
+        {% for donacion in donaciones %}
+        <tr>    
+            <td>{{ donacion.nombre_region }}</td>
+            <td>{{ donacion.nombre_comuna }}</td>
+            <td>{{ donacion.calle_numero }}</td>
+            <td>{{ donacion.tipo }}</td>
+            <td>{{ donacion.cantidad }}</td>
+            <td>{{ donacion.fecha_disponibilidad }}</td>
+            <td>{{ donacion.descripcion }}</td>
+            <td>{{ donacion.condiciones_retirar }}</td>
+            <td>{{ donacion.nombre }}</td>
+            <td>{{ donacion.email }}</td>
+            <td>{{ donacion.celular }}</td>
+
+            <td>
+            {% for foto in fotos %}
+            <img src="{{ url_for('static', filename='uploads/' + foto.nombre_archivo) }}" width="100" alt ="foto">
+        {% endfor %}
+            </td>
+        
+        </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+    {% block javascript %}
+    <script src="{{ url_for('static', filename='js/mostrarDonacion.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>

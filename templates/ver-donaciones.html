@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver donaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilodonaciones.css') }}">
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <div id="templatemo_top">
+        <ul class="templatemo_menu_horizon">
+            <li class="current"><a href="/"><b>Inicio</b></a></li>
+            <li><a href="/agregar-donacion/1"><b>Agregar Donación</b></a></li>
+            <li><a href="/agregar-pedido/1"><b>Agregar Pedido</b></a></li>
+            <li><a href="/ver-donaciones/0"><b>Ver Donaciones</b></a></li>
+            <li><a href="/ver-pedidos/0"><b>Ver Pedidos</b></a></li>
+        </ul>
+        <div class="templatemo_spacer"></div>
+    </div>
+    <div class="title">Información sobre las donaciones</div>
+
+    <table>
+        <tr>
+            <td>Comuna</td>
+            <td>Tipo</td>
+            <td>Cantidad</td>
+            <td>Fecha de disponibilidad</td>
+            <td>Nombre donante</td>
+            <td>Fotos</td>
+        </tr>
+        {% for donacion in donaciones %}
+        <tr onclick="redirigirConId('{{ donacion.id }}')">
+            <td>{{ donacion.comuna_id }}</td>
+            <td>{{ donacion.tipo }}</td>
+            <td>{{ donacion.cantidad }}</td>
+            <td>{{ donacion.fecha_disponibilidad }}</td>
+            <td>{{ donacion.nombre }}</td>
+            <td>
+   
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+
+    <br>
+    {% if donaciones|length == 5 %}
+    <button type="button" id="cambio2" onclick="location.href='{{ url_for('ver_donaciones', inicio=inicio + 5) }}'">Avanzar de página</button>
+    {% endif %}
+    {% if inicio > 0 %}
+    <button type="button" id="cambio" onclick="location.href='{{ url_for('ver_donaciones', inicio=inicio - 5) }}'">Retroceder de página</button>
+    {% endif %}
+
+    {% block javascript %}
+    <script  src="{{ url_for('static', filename='js/redirige2.js') }}"></script>
+    {% endblock %}
+
+</body>
+
+</html>

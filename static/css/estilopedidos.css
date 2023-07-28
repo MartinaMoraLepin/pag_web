@@ -1,0 +1,79 @@
+table {
+    border: 2px solid rgb(253, 20, 179);
+    background-color: #F0F0F0;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid rgb(253, 20, 179);
+    padding: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: #F8E8E8;
+}
+
+#templatemo_top {
+    background-color: #F8E8E8;
+    border-bottom: 1px solid #F02D7D;
+    padding: 10px;
+}
+
+.templatemo_menu_horizon li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.templatemo_menu_horizon li a {
+    color: #F02D7D;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.templatemo_menu_horizon li.current a {
+    font-weight: bold;
+}
+
+.templatemo_menu_horizon li a:hover {
+    color: #C01F60;
+}
+
+.templatemo_spacer {
+    height: 20px;
+}
+
+.main-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #F02D7D;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #F02D7D;
+}
+
+table {
+    border: 2px solid rgb(253, 20, 179);
+    background-color: #F0F0F0;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid rgb(253, 20, 179);
+    padding: 10px;
+    text-align: center;
+}

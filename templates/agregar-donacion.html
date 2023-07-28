@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Donación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estiloAdonaciones.css') }}">
+
+</head>
+
+
+<body>
+
+    <div id="templatemo_top">
+        <ul class="templatemo_menu_horizon">
+            <li class="current"><a href="/"><b>Inicio</b></a></li>
+            <li><a href="/agregar-donacion/1"><b>Agregar Donación</b></a></li>
+            <li><a href="/agregar-pedido/1"><b>Agregar Pedido</b></a></li>
+            <li><a href="/ver-donaciones/0"><b>Ver Donaciones</b></a></li>
+            <li><a href="/ver-pedidos/0"><b>Ver Pedidos</b></a></li>
+
+        </ul>
+        <div class="templatemo_spacer"></div>
+    </div>
+    <div class="main-container">
+        <h1> Agrega una donación</h1>
+        <div class="main-container">
+            <div id="val-box" hidden>
+                <h2 id="val-msg">.</h2>
+                <ul id="val-list"></ul>
+            </div>
+
+            <form name="formulario-agrega-donacion" method="post" enctype="multipart/form-data">
+                <label for="region">Regiones:</label>
+                <input type="hidden" name="region_id" id="region_id">
+
+                <select id="region" name="region" onchange="seleccionarRegion()">
+                    {% for region in regiones %}
+                      <option value="{{ region.id }}">{{ region.nombre }}</option>
+                    {% endfor %}
+                  </select>
+                  
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <label for="comuna">Comunas:</label>
+
+                <select id="comuna" name="comuna" onchange>
+                    {% for comuna in comunas %}
+                    <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <br>
+
+                <label for="calle-numero"> Calle y número</label>
+                <input type="text" name="calle-numero" id="calle-numero" required>
+                <label for="tipo">Seleccione el tipo de donación:</label>
+                <select id="tipo" name="tipo">
+                    <option value="0">Escoja un tipo</option>
+                    <option value="1">Fruta</option>
+                    <option value="2">Verdura</option>
+                    <option value="3">Otro</option>
+                </select>
+
+                <label for="cantidad"> Cantidad</label>
+                <input type="text" name="cantidad" id="cantidad">
+
+                <label for="fecha-disponibilidad"> Fecha:</label>
+                <input type="text" name="fecha-disponibilidad" id="fecha-disponibilidad">
+
+                <label for="descripcion"> Descripción</label>
+                <input type="text" name="descripcion" id="descripcion">
+
+                <label for="condiciones"> Condiciones de retiro</label>
+                <input type="text" name="condiciones" id="condiciones">
+                <label for="foto-1">Foto de la donación 1 </label>
+                <input type="file" name="foto-1" id="foto-1" multiple accept="image/*,.pdf"><br>
+
+                <label for="foto-2">Foto de la donación 2(opcional) </label>
+                <input type="file" name="foto-2" id="foto-2" multiple accept="image/*,.pdf"><br>
+
+                <label for="foto-3">Foto de la donación 3(opcional) </label>
+                <input type="file" name="foto-3" id="foto-3" multiple accept="image/*,.pdf"><br>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre"><br>
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email"><br>
+
+                <label for="celular">Celular(incluyendo el +569)</label>
+                <input type="text" name="celular" id="celular"><br>
+
+                <button id="submit-btn" type="button">Agregar Donación</button>
+                <div id="mensaje" style="display: none;">
+                    <p>¿Confirma que desea agregar esta donación?</p>
+
+                    <button id="confirma" type="submit">Si, deseo enviar el formulario</button>
+
+                    <button id="cancela" type="button"> No,quiero volver al formulario</button>
+
+                </div>
+                <div id="mensaje-final" style="display: none;">
+                    <p>Hemos recibido la información de su donación. Muchas gracias.</p>
+
+                    <button type="button" onclick="window.location.href='inicio.html'"> Volver al inicio</button>
+
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    {% block javascript %}
+
+    <script src="{{ url_for('static', filename='js/validadorDonacion.js') }}"></script>
+    {% endblock %}
+
+
+
+</body>
+
+
+</html>

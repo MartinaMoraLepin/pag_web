@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilopedidos.css') }}">
+</head>
+
+<body>
+    <div>
+
+        <!-- navbar -->
+        <div id="templatemo_top">
+            <ul class="templatemo_menu_horizon">
+                <li class="current"><a href="/"><b>Inicio</b></a></li>
+                <li><a href="/agregar-donacion/1"><b>Agregar Donación</b></a></li>
+                <li><a href="/agregar-pedido/1"><b>Agregar Pedido</b></a></li>
+                <li><a href="/ver-donaciones/0"><b>Ver Donaciones</b></a></li>
+                <li><a href="/ver-pedidos/0"><b>Ver Pedidos</b></a></li>
+
+            </ul>
+            <div class="templatemo_spacer"></div>
+        </div>
+        <div class="title">Información sobre los pedidos</div>
+
+        <table>
+            <tr>
+                <td>Comuna</td>
+                <td>Tipo</td>
+                <td>Cantidad</td>
+                <td>Descripción
+                </td>
+                <td>Nombre Solicitante</td>
+
+            </tr>
+
+            {% for pedido in pedidos %}
+            <tr onclick="redirigirConId('{{ pedido.id }}')">
+                <td>{{ pedido.comuna_id }}</td>
+                <td>{{ pedido.tipo }}</td>
+                <td>{{ pedido.cantidad }}</td>
+                <td>{{ pedido.descripcion }}</td>
+                <td>{{ pedido.nombre_solicitante }}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+
+    </div>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+    {% if pedidos | length == 5%}
+    <button type="button" id="cambio2" onclick="location.href='{{url_for('ver_pedidos',inicio = inicio +5)}}'">Avanzar de página</button>
+   {%endif%}
+   {% if inicio>0 %}
+
+   <button type="button" id="cambio" onclick="location.href='{{url_for('ver_pedidos',inicio = inicio -5)}}'">Retroceder de página</button>
+   {%endif %}
+
+    {% block javascript %}
+    <script src="{{ url_for('static', filename='js/redirige.js') }}"></script>
+    {% endblock %}
+
+</body>
+
+</html>

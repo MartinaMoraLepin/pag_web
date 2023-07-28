@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donacion de frutas o verduras</title>
+    <link rel="stylesheet" href="../css/Estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+
+</head>
+
+<body>
+    <h1>Estadísticas sobre los pedidos y donaciones</h1>
+    <!-- navbar -->
+    <div id="templatemo_top">
+        <ul class="templatemo_menu_horizon">
+            <li class="current"><a href="/"><b>Inicio</b></a></li>
+            <li><a href="agregar-donacion/1"><b>Agregar Donación</b></a></li>
+            <li><a href="agregar-pedido/1"><b>Agregar Pedido</b></a></li>
+            <li><a href="ver-donaciones"><b>Ver Donaciones</b></a></li>
+            <li><a href="ver-pedidos"><b>Ver Pedidos</b></a></li>
+        </ul>
+        <div class="templatemo_spacer"></div>
+    </div>
+
+    <div class="stats-container">
+        <figure class="highcharts-figure">
+            <div id="container" ></div>
+            <p class="highcharts-description">
+                El anterior gráfico presenta el número de pedidos por tipo.
+            </p>
+        </figure>
+        <figure class="highcharts-figure">
+            <div id="container1"></div>
+            <p class="highcharts-description">
+                El anterior gráfico presenta el número de donaciones por tipo.
+            </p>
+        </figure>
+        
+    </div>
+
+<!--libreria para usar graficos-->
+
+    
+{% block javascript %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='js/stats.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>
+
+
